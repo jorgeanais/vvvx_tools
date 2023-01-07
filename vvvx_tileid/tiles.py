@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from astropy import units as u
 
+from astropy.io import fits
 from astropy.visualization.wcsaxes import Quadrangle
 
 
@@ -25,6 +26,12 @@ df = pd.read_csv(
 
 ax = plt.subplot(projection="galactic zoom", center='0d 0d', radius='30 deg', rotate='0 deg')
 ax.grid()
+
+# Gaia source density (optional)
+hdu = fits.open("../vvvx_plot_regions/density_map.fits")[1]
+hdu.header["COORDSYS"] = "GALACTIC"
+ax.imshow_hpx(hdu, cmap="Greys")
+
 
 for index, row in df.iterrows():
     r = Quadrangle(
