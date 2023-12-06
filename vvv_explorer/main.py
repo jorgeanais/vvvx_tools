@@ -8,7 +8,7 @@ This is done in parallel using the multiprocess module.
 """
 
 def main():
-    data_dir = Path("/home/jorge/Documents/data/vvvxtiles/raw/test")
+    data_dir = Path("/run/media/jorge/TWOTERAS/DATA/phd/PSF_bulge/")
     run(data_dir)
 
 

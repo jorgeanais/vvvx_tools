@@ -66,10 +66,16 @@ def check_limits(idx: int, filepath: Path):
         return min_angle + 360, max_angle, width, middle
 
     
-    print("Processing file ", filepath.stem, " with process ", idx)  # TODO: remove
+    print("Processing file ", filepath.name, " with process ", idx)  # TODO: remove
 
     try:
-        df = Table.read(filepath, format="ascii").to_pandas()
+        if filepath.suffix == ".csv":
+            df = Table.read(filepath, format="ascii").to_pandas()
+        elif filepath.suffix == ".fits":
+            df = Table.read(filepath, format="fits").to_pandas()
+        else:
+            raise Exception("File extension not supported")  
+            
     except Exception as e:
         print("Error reading file", filepath.stem, e)
         print() 

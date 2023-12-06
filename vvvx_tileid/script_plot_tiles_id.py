@@ -40,6 +40,5 @@ for i, row in df.iterrows():
 
     #ax.text(x_middle, y_middle, tile_id)
 
-
 ax.set_axis_off()
 plt.show()
