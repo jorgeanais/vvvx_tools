@@ -10,7 +10,7 @@ import utils.process as process
 
 def run(data_dir: Path) -> None:
 
-    file_list = list(data_dir.glob("zyjhk*"))
+    file_list = list(data_dir.glob("zyjhk*")).sort()
     
     n_parameters = 9  # TODO: I should get this from the function
     n_output = len(file_list)  # number_of_files
